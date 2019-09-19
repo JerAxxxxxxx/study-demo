@@ -18,7 +18,9 @@ import java.io.IOException;
 public class Example {
     public static void main(String[] args) throws IOException, ApiException {
         ApiClient client = Config.defaultClient();
+        //client.setBasePath("136.244.85.148:8080");
         Configuration.setDefaultApiClient(client);
+
 
         CoreV1Api api = new CoreV1Api();
         V1PodList list = api.listPodForAllNamespaces(null, null, null, null, null, null, null, null);

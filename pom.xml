@@ -12,7 +12,7 @@
     <artifactId>kubernetes_test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>kubernetes_test</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Java管理kubernetes API</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -29,11 +29,39 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--kubernetes 官方维护的Java客户端-->
+        <dependency>
+            <groupId>io.kubernetes</groupId>
+            <artifactId>client-java</artifactId>
+            <version>6.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--apollo 组件-->
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+        <!--kubernetes 社区维护的Java客户端    fabric8  begin-->
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-client</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+        <!--fabric8插件  end-->
     </dependencies>
 
     <build>

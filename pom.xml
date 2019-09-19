@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.8.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>kubernetes_test</artifactId>
@@ -50,7 +50,7 @@
             <version>1.4.0</version>
         </dependency>
 
-        <!--kubernetes 社区维护的Java客户端    fabric8  begin-->
+        <!--kubernetes 社区维护的Java客户端    fabric8框架  begin-->
         <dependency>
             <groupId>io.fabric8</groupId>
             <artifactId>kubernetes-client</artifactId>
@@ -61,7 +61,7 @@
             <artifactId>kubernetes-model</artifactId>
             <version>4.5.2</version>
         </dependency>
-        <!--fabric8插件  end-->
+        <!--fabric8框架  end-->
     </dependencies>
 
     <build>

@@ -22,4 +22,6 @@ public interface UserService {
 
     int updateByPrimaryKey(User record);
 
+    User findByUsername(String username);
+
 }

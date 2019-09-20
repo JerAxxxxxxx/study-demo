@@ -1,5 +1,9 @@
 package com.example.kubernetes.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
 import com.example.kubernetes.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -21,4 +25,9 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+
+    User findByUsername(@Param("username") String username);
+
+
 }

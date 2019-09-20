@@ -1,18 +1,22 @@
 package com.example.kubernetes.example;
 
 import io.fabric8.kubernetes.api.model.Namespace;
+import io.fabric8.kubernetes.api.model.ObjectMeta;
 import io.fabric8.kubernetes.api.model.Service;
 import io.fabric8.kubernetes.api.model.ServiceList;
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.ConfigBuilder;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClient;
+import io.kubernetes.client.proto.Meta;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author liuhaozhen
  * @version Revision 1.0.0
  * @date 2019/9/19 13:57
  */
+@Slf4j
 public class Fabric8Example {
 
     private static final String DEFAULT_URL = "http://136.244.85.148:8080";
@@ -20,8 +24,20 @@ public class Fabric8Example {
     public static void main(String[] args) {
 
         Config config = new ConfigBuilder().withMasterUrl(DEFAULT_URL).build();
-        KubernetesClient client = new DefaultKubernetesClient(config);//使用默认的就足够了
+        KubernetesClient client = new DefaultKubernetesClient(DEFAULT_URL);//使用默认的就足够了
         insert(client);
+
+
+    }
+
+    private static void testNamespace() {
+        Namespace namespace = new Namespace();
+        //namespace.setApiVersion(Meta.APIVersions.VERSIONS_FIELD_NUMBER);
+        namespace.setKind("namespace");
+        ObjectMeta objectMeta = new ObjectMeta();
+        objectMeta.setName("nc-f8");
+        namespace.setMetadata(objectMeta);
+
     }
 
 

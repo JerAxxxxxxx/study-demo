@@ -37,11 +37,11 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
             chain.doFilter(request, response);
             return;
         }
-        // 如果请求头中有token，则进行解析，并且设置认证信息
+        /* 如果请求头中有token，则进行解析，并且设置认证信息 */
         try {
             SecurityContextHolder.getContext().setAuthentication(getAuthentication(tokenHeader));
         } catch (TokenIsExpiredException e) {
-            //返回json形式的错误信息
+            /*返回json形式的错误信息*/
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json; charset=utf-8");
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -53,7 +53,13 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         super.doFilterInternal(request, response, chain);
     }
 
-    // 这里从token中获取用户信息并新建一个token
+    /**
+     * 这里从token中获取用户信息并新建一个token
+     *
+     * @param tokenHeader
+     * @return
+     * @throws TokenIsExpiredException
+     */
     private UsernamePasswordAuthenticationToken getAuthentication(String tokenHeader) throws TokenIsExpiredException {
         String token = tokenHeader.replace(JwtTokenUtils.TOKEN_PREFIX, "");
         boolean expiration = JwtTokenUtils.isExpiration(token);

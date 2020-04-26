@@ -36,7 +36,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
 
-        // 从输入流中获取到登录的信息
+        /*从输入流中获取到登录的信息*/
         try {
             LoginUser loginUser = new ObjectMapper().readValue(request.getInputStream(), LoginUser.class);
             rememberMe.set(loginUser.getRememberMe());
@@ -49,8 +49,17 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         }
     }
 
-    // 成功验证后调用的方法
-    // 如果验证成功，就生成token并返回
+    /**
+     * 成功验证后调用的方法
+     * 如果验证成功，就生成token并返回
+     *
+     * @param request
+     * @param response
+     * @param chain
+     * @param authResult
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response,
@@ -69,9 +78,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String token = JwtTokenUtils.createToken(jwtUser.getUsername(), role, isRemember);
 //        String token = JwtTokenUtils.createToken(jwtUser.getUsername(), false);
-        // 返回创建成功的token
-        // 但是这里创建的token只是单纯的token
-        // 按照jwt的规定，最后请求的时候应该是 `Bearer token`
+        /*返回创建成功的token*/
+        /*但是这里创建的token只是单纯的token*/
+        /*按照jwt的规定，最后请求的时候应该是 `Bearer token`*/
         response.setHeader("token", JwtTokenUtils.TOKEN_PREFIX + token);
     }
 

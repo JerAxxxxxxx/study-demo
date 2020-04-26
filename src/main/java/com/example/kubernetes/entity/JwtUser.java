@@ -20,7 +20,11 @@ public class JwtUser implements UserDetails {
     public JwtUser() {
     }
 
-    // 写一个能直接使用user创建jwtUser的构造器
+    /**
+     * 写一个能直接使用user创建jwtUser的构造器
+     *
+     * @param user
+     */
     public JwtUser(User user) {
         id = user.getId();
         username = user.getUsername();
